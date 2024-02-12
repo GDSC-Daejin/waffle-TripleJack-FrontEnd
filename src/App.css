@@ -29,14 +29,39 @@
 }
 
 .container {
-  max-width: 500px;
-  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
 }
 
+.logo {
+  text-align: center;
+}
+
+.InputWrap {
+  width: 90%;
+  background-color: #e4e3f7;
+  height: 150px;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+}
+.idpw {
+  display: block;
+  margin: 10px;
+  border-top: none; /* 위쪽 테두리를 없애기 위해 추가 */
+  border-left: none; /* 왼쪽 테두리를 없애기 위해 추가 */
+  border-right: none; /* 오른쪽 테두리를 없애기 위해 추가 */
+  border-bottom: 2px solid; /* 아래쪽 테두리를 굵게 강조하기 위해 추가 */
+  background-color: #e4e3f7;
+}
+
+.idpw::placeholder {
+  color: white; /* 원하는 색상으로 변경하세요 */
+  font-weight: bold;
+}
 
 @keyframes App-logo-spin {
   from {
