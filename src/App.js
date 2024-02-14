@@ -2,12 +2,36 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Container, Form, Navbar } from "react-bootstrap";
 import google from "./google.png";
-import React from "react";
+import React, { useState } from "react";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function App() {
+  const [userId, setUserId] = useState();
+  const [userPw, setUserPw] = useState();
+
+  const userIdPw = {
+    userId,
+    userPw,
+    setUserId,
+    setUserPw,
+  };
+
+  return (
+    <div className="App">
+      <Routes>
+        <Route path="/" element={<Login userIdPw={userIdPw} />} />
+        <Route path="/main" element={<div>메인페이지임</div>} />
+      </Routes>
+    </div>
+  );
+}
+
+function Login(props) {
+  const navigate = useNavigate();
   return (
     <div className="contentWrap">
-      <Navbar className="bg-body-tertiary">
+      {/* <Navbar className="bg-body-tertiary">
         <Container fluid>
           <Navbar.Brand href="#">Daejin Univ</Navbar.Brand>
 
@@ -21,17 +45,50 @@ function App() {
             <Button variant="outline-success">Search</Button>
           </Form>
         </Container>
-      </Navbar>
+      </Navbar> */}
 
       <div className="logo">로고</div>
 
       <div className="InputWrap">
-        <input className="idpw" type="text" placeholder="아이디 입력"></input>
-        <input className="idpw" type="text" placeholder="비밀번호 입력"></input>
+        <input
+          className="idpw"
+          type="text"
+          placeholder="아이디 입력"
+          onChange={(e) => {
+            props.userIdPw.setUserId(e.target.value);
+            console.log(props.userIdPw.userId);
+          }}
+        ></input>
+        <input
+          className="idpw"
+          type="password"
+          placeholder="비밀번호 입력"
+          onChange={(e) => {
+            props.userIdPw.setUserPw(e.target.value);
+            console.log(props.userIdPw.userPw);
+          }}
+        ></input>
       </div>
 
       <div className="loginBtnWrap">
-        <button className="loginBtn">로그인</button>
+        <button
+          className="loginBtn"
+          onClick={() => {
+            const { userId, userPw } = props.userIdPw;
+            console.log({ userId, userPw });
+            axios
+              .post("주소", { userId, userPw })
+              .then((결과) => {
+                console.log(결과);
+                navigate("/main");
+              })
+              .catch((error) => {
+                console.error("로그인 요청 에러:", error);
+              });
+          }}
+        >
+          로그인
+        </button>
       </div>
 
       <div className="findIdPw">
