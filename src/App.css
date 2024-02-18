@@ -1,14 +1,15 @@
 .contentWrap {
   display: flex;
   flex-direction: column;
-  /* background-color: grey; */
 
   width: 100%;
   margin: auto;
-  align-items: center;
+
   overflow: auto;
-  height: 1000px;
-  background-color: grey;
+  height: 100vh;
+
+  align-items: center;
+  /* background-color: grey; */
 }
 
 @media (min-width: 768px) {
@@ -23,15 +24,18 @@
 
 .logo {
   text-align: center;
-  margin: auto;
-  padding: 30px;
+  width: 60%;
+  height: 60px;
+  background-color: #4040ff;
+  border-radius: 70px;
+  margin-top: 30px;
 }
 
 .InputWrap {
   width: 90%;
-  background-color: #e4e3f7;
+  background-color: white;
   height: 150px;
-  border-radius: 30px;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -44,12 +48,11 @@
   border-top: none; /* 위쪽 테두리를 없애기 위해 추가 */
   border-left: none; /* 왼쪽 테두리를 없애기 위해 추가 */
   border-right: none; /* 오른쪽 테두리를 없애기 위해 추가 */
-  border-bottom: 2px solid; /* 아래쪽 테두리를 굵게 강조하기 위해 추가 */
-  background-color: #e4e3f7;
+  border-bottom: 1px solid; /* 아래쪽 테두리를 굵게 강조하기 위해 추가 */
 }
 
 .idpw::placeholder {
-  color: white; /* 원하는 색상으로 변경하세요 */
+  color: gray; /* 원하는 색상으로 변경하세요 */
   font-weight: bold;
 }
 
@@ -61,10 +64,9 @@
 
 .loginBtn {
   width: 100%;
-  background-color: #0900ba;
+  background-color: #4040ff;
   color: white;
   font-weight: bold;
-  border-radius: 10px;
   height: 50px;
   font-size: large;
   border: none;
@@ -77,8 +79,9 @@
 }
 
 .googleLogo {
-  width: 70%;
+  width: 50%;
   height: 50px;
+  margin-top: 100px;
 }
 
 .email {
@@ -88,8 +91,7 @@
 }
 
 .emailBtn {
-  border-radius: 5px;
-  border: solid 2px #0900ba;
+  border: solid 1px #4040ff;
   font-weight: bold;
   font-size: 800;
   width: 70%;
@@ -129,4 +131,8 @@
   width: 100%;
   padding: 20px;
   background-color: white;
+}
+
+.findIdPw {
+  flex: 1;
 }

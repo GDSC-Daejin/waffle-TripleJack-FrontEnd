@@ -11,7 +11,7 @@ function Login() {
 
   return (
     <div className="contentWrap">
-      <div className="logo">로고</div>
+      <div className="logo">대카풀</div>
 
       <div className="InputWrap">
         <input
