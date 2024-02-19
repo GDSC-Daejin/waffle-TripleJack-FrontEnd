@@ -4,6 +4,7 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import React, { Component } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Trip from "../com/trip.js";
 
 import { useState } from "react";
 import "../App.css";
@@ -13,6 +14,7 @@ import BottomNav from "../com/bottomNav.js";
 
 function Main(props) {
   var [date, setdate] = useState();
+  var [trip, setTrip] = useState(false);
   return (
     <div className="contentWrap">
       <Navbar className="bg-body-tertiary">
@@ -40,22 +42,20 @@ function Main(props) {
         <SwipeToSlide setdate={setdate} />
       </div>
 
-      <div className="selectWrap">
-        <DropdownButton id="dropdown-basic-button" title="지역" style={{}}>
-          <Dropdown.Item href="#/action-1">서울</Dropdown.Item>
-          <Dropdown.Item href="#/action-1">경기</Dropdown.Item>
-          <Dropdown.Item href="#/action-2">인천</Dropdown.Item>
-        </DropdownButton>
-      </div>
-
-      <div className="externalRide">
-        <Content setdate={setdate} date={date} />
-      </div>
-
-      {/* 더보기 버튼 */}
       <div>
-        <button>더보기</button>
+        <button
+          onClick={() => {
+            setTrip(true);
+          }}
+        >
+          여정 만들기
+        </button>
       </div>
+      <div>
+        <div>나의 여정</div>
+      </div>
+
+      {trip == true ? <Trip setTrip={setTrip} /> : null}
 
       <BottomNav></BottomNav>
     </div>
