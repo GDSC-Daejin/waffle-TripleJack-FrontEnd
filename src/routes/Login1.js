@@ -4,7 +4,7 @@ import axios from "axios";
 import google from "../google.png";
 import { useState } from "react";
 
-function Login() {
+function Login(props) {
   const navigate = useNavigate();
   const [userId, setUserId] = useState();
   const [userPw, setUserPw] = useState();
@@ -72,7 +72,13 @@ function Login() {
       </div>
 
       <div className="google">
-        <img src={google} className="googleLogo" />
+        <img
+          src={google}
+          className="googleLogo"
+          onClick={() => {
+            navigate("/driver");
+          }}
+        />
       </div>
 
       <div className="email">

@@ -14,7 +14,7 @@ function BottomNav() {
         </li>
         <li>메신져</li>
         <li>탑승자</li>
-        <li>운전자</li>
+        <li onClick={() => {}}>운전자</li>
         <li>마이페이지</li>
       </ul>
     </div>
