@@ -1,20 +1,43 @@
-import { Form, Button, Navbar, Container, ButtonGroup } from "react-bootstrap";
+import { Form, Button, Navbar, Container } from "react-bootstrap";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
-import React, { Component } from "react";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import axios from "axios";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
 
-import { useState } from "react";
+import "swiper/css";
+import "swiper/css/navigation";
+
+import { useState, useEffect } from "react";
 import "../App.css";
-import SwipeToSlide from "../com/cau.js";
-import Content from "../com/content.js";
-import BottomNav from "../com/bottomNav.js";
+
+import Content from "../component/content.js";
+import BottomNav from "../component/bottomNav.js";
 
 function Main(props) {
-  var [date, setdate] = useState();
+  const [date, setdate] = useState();
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/list") // GET 요청
+      .then((response) => {
+        setdate(response.data); // 응답 데이터를 상태에 저장
+      })
+      .catch((error) => {
+        console.error("There was an error!", error);
+      });
+  }, []);
+
   return (
     <div className="contentWrap">
+      <div>
+        {date &&
+          date.map((item) => (
+            <div key={item._id}>
+              {/* item에 있는 필드를 아래와 같이 출력할 수 있습니다. */}
+              <p>{item.day}</p>
+            </div>
+          ))}
+      </div>
       <Navbar className="bg-body-tertiary">
         <Container fluid>
           <Navbar.Brand href="#">Daejin Univ</Navbar.Brand>
@@ -37,7 +60,17 @@ function Main(props) {
         </DropdownButton>
       </div>
       <div className="dayWrap">
-        <SwipeToSlide setdate={setdate} />
+        <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+          <SwiperSlide>
+            <ul className="daylist">
+              <li>asd</li>
+              <li>asd</li>
+              <li>asd</li>
+            </ul>
+          </SwiperSlide>
+          <SwiperSlide>Slide 2</SwiperSlide>
+          <SwiperSlide>Slide 3</SwiperSlide>
+        </Swiper>
       </div>
 
       <div className="selectWrap">

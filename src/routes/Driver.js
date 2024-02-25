@@ -4,13 +4,13 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import React, { Component } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Trip from "../com/trip.js";
+import Trip from "../component/trip.js";
 
 import { useState } from "react";
 import "../App.css";
-import SwipeToSlide from "../com/cau.js";
-import Content from "../com/content.js";
-import BottomNav from "../com/bottomNav.js";
+import SwipeToSlide from "../component/cau.js";
+import Content from "../component/content.js";
+import BottomNav from "../component/bottomNav.js";
 
 function Main(props) {
   var [date, setdate] = useState();

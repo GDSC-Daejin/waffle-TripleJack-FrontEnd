@@ -6,7 +6,7 @@ function Trip(props) {
       <div
         style={{
           background: "white",
-          height: "300px",
+          height: "350px",
           width: "300px",
           padding: "20px",
         }}
@@ -37,8 +37,14 @@ function Trip(props) {
             <option>9:30</option>
           </select>
         </div>
-
-        <input style={{ height: "150px", display: "block" }}></input>
+        <span>출발지</span>
+        <input style={{ display: "block" }}></input>
+        <span>도착지</span>
+        <input style={{ display: "block" }}></input>
+        <span>차번호</span>
+        <input style={{ display: "block" }}></input>
+        <span>보증금</span>
+        <input style={{ display: "block" }}></input>
 
         <button>작성</button>
         <button

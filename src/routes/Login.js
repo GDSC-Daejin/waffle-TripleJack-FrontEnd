@@ -56,33 +56,26 @@ function Login(props) {
       </div>
 
       <div className="findIdPw">
-        <span
-          className="findId"
-          style={{ marginRight: "30px" }}
-          onClick={() => {
-            alert("");
-          }}
-        >
-          아이디찾기
-        </span>
-        <span>|</span>
-        <span className="findPw" style={{ marginLeft: "30px" }}>
-          비밀번호 찾기
-        </span>
+        <ul>
+          <li style={{ marginRight: "30px" }}>아이디 찾기</li>
+          <span>|</span>
+          <li style={{ marginLeft: "30px" }}>비밀번호 찾기</li>
+        </ul>
       </div>
 
       <div className="google">
-        <img
-          src={google}
-          className="googleLogo"
-          onClick={() => {
-            navigate("/driver");
-          }}
-        />
+        <img src={google} className="googleLogo" />
       </div>
 
       <div className="email">
-        <button className="emailBtn">이메일로 가입하기</button>
+        <button
+          className="emailBtn"
+          onClick={() => {
+            navigate("/sign");
+          }}
+        >
+          가입하기
+        </button>
       </div>
     </div>
   );
