@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 
 import "swiper/css";
-import "swiper/css/navigation";
+import "swiper/css/navigation"; //캐러셀 라이브러리
 
 import { useState, useEffect } from "react";
 import "../App.css";
@@ -14,7 +14,7 @@ import "../App.css";
 import Content from "../component/content.js";
 import BottomNav from "../component/bottomNav.js";
 
-function Main(props) {
+function Passenger(props) {
   const [date, setdate] = useState();
   useEffect(() => {
     axios
@@ -29,18 +29,9 @@ function Main(props) {
 
   return (
     <div className="contentWrap">
-      <div>
-        {date &&
-          date.map((item) => (
-            <div key={item._id}>
-              {/* item에 있는 필드를 아래와 같이 출력할 수 있습니다. */}
-              <p>{item.day}</p>
-            </div>
-          ))}
-      </div>
       <Navbar className="bg-body-tertiary">
         <Container fluid>
-          <Navbar.Brand href="#">Daejin Univ</Navbar.Brand>
+          <Navbar.Brand href="#">대카풀</Navbar.Brand>
 
           <Form className="d-flex">
             <Form.Control
@@ -53,12 +44,7 @@ function Main(props) {
           </Form>
         </Container>
       </Navbar>
-      <div className="selectWrap">
-        <DropdownButton id="dropdown-basic-button" title="탑승자">
-          <Dropdown.Item href="#/action-1">탑승자</Dropdown.Item>
-          <Dropdown.Item href="#/action-2">운전자</Dropdown.Item>
-        </DropdownButton>
-      </div>
+
       <div className="dayWrap">
         <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
           <SwiperSlide>
@@ -95,4 +81,4 @@ function Main(props) {
   );
 }
 
-export default Main;
+export default Passenger;

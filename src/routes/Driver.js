@@ -1,7 +1,7 @@
-import { Form, Button, Navbar, Container, ButtonGroup } from "react-bootstrap";
+import { Form, Button, Navbar, Container } from "react-bootstrap";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
-import React, { Component } from "react";
+import React from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Trip from "../component/trip.js";
@@ -9,7 +9,6 @@ import Trip from "../component/trip.js";
 import { useState } from "react";
 import "../App.css";
 import SwipeToSlide from "../component/cau.js";
-import Content from "../component/content.js";
 import BottomNav from "../component/bottomNav.js";
 
 function Main(props) {
@@ -55,7 +54,7 @@ function Main(props) {
         <div>나의 여정</div>
       </div>
 
-      {trip == true ? <Trip setTrip={setTrip} /> : null}
+      {trip === true ? <Trip setTrip={setTrip} /> : null}
 
       <BottomNav></BottomNav>
     </div>

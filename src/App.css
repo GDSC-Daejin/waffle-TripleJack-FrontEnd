@@ -1,3 +1,15 @@
+@font-face {
+  font-family: "ADLYeonnamdong";
+  font-weight: 50;
+  src: url("./fonts/ADLYeonnamdongSlanted.otf");
+}
+
+.logo {
+  font-family: "ADLYeonnamdong";
+  font-size: 80px;
+  color: #4040ff;
+  padding: 10px;
+}
 .contentWrap {
   display: flex;
   flex-direction: column;
@@ -9,7 +21,8 @@
   height: 100vh;
 
   align-items: center;
-  /* background-color: grey; */
+
+  padding-bottom: 60px;
 }
 
 @media (min-width: 768px) {
@@ -20,15 +33,6 @@
 
 .bg-body-tertiary {
   width: 100%;
-}
-
-.logo {
-  text-align: center;
-  width: 60%;
-  height: 60px;
-  background-color: #4040ff;
-  border-radius: 70px;
-  margin-top: 30px;
 }
 
 .InputWrap {
@@ -146,13 +150,31 @@
   width: 100%; /* 전체 너비 */
   border: solid 1px #4040ff;
   border-radius: 5px;
+  background-color: white;
+}
+@media (min-width: 768px) {
+  .bottom-nav {
+    width: 80%; /* 너비 조절 */
+  }
+}
+
+.bottom-nav div {
+  display: flex; /* 추가 */
+  align-items: center; /* 추가 */
+  justify-content: center; /* 추가 */
+  padding: 3px;
 }
 
 .bottom-nav ul {
   list-style-type: none; /* 점 없애기 */
   display: flex; /* 수평 배치 */
-  justify-content: space-around; /* 항목들을 공간에 균등하게 분포 */
   padding: 0; /* 기본 패딩 제거 */
+  justify-content: space-around; /* 추가 */
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .black-bg {

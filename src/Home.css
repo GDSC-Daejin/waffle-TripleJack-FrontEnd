@@ -1,0 +1,40 @@
+.homeDiv {
+  width: 100%;
+  padding: 10px;
+}
+
+.select {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.selectImg {
+  border-radius: 5%;
+  text-align: center;
+  background-color: #f4f4f4;
+}
+
+.homeList {
+  background-color: white;
+  border-radius: 5%;
+  padding: 5px;
+  overflow: auto; /* Add this line */
+}
+
+p {
+  margin: 0;
+}
+
+.Top {
+  display: flex;
+  justify-content: space-between;
+  /* background-color: lightgray; */
+  align-items: center;
+}
+
+.homeTopFont {
+  font-family: "ADLYeonnamdong";
+  font-size: 30px;
+  color: #4040ff;
+}

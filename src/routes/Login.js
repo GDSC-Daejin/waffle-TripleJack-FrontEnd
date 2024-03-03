@@ -11,7 +11,9 @@ function Login(props) {
 
   return (
     <div className="contentWrap">
-      <div className="logo">대카풀</div>
+      <div className="logo">
+        <p className="logo">대카풀</p>
+      </div>
 
       <div className="InputWrap">
         <input
@@ -38,7 +40,7 @@ function Login(props) {
         <button
           className="loginBtn"
           onClick={() => {
-            navigate("/main");
+            navigate("/home");
             console.log(userId, userPw);
             axios
               .post("주소", (userId, userPw))
