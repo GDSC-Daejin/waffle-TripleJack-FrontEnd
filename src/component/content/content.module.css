@@ -1,0 +1,7 @@
+.contentBox {
+  display: flex;
+  justify-content: space-between;
+  border: solid 1px;
+  border-radius: 5px;
+  margin: 10px;
+}

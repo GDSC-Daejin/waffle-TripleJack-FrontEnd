@@ -4,7 +4,7 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import React from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Trip from "../component/trip.js";
+import Trip from "../component/trip/trip.js";
 
 import { useState } from "react";
 import "../App.css";

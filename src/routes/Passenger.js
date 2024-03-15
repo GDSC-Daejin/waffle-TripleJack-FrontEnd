@@ -11,21 +11,11 @@ import "swiper/css/navigation"; //캐러셀 라이브러리
 import { useState, useEffect } from "react";
 import "../App.css";
 
-import Content from "../component/content.js";
+import Content from "../component/content/content.js";
 import BottomNav from "../component/bottomNav.js";
 
 function Passenger(props) {
   const [date, setdate] = useState();
-  useEffect(() => {
-    axios
-      .get("http://localhost:8080/list") // GET 요청
-      .then((response) => {
-        setdate(response.data); // 응답 데이터를 상태에 저장
-      })
-      .catch((error) => {
-        console.error("There was an error!", error);
-      });
-  }, []);
 
   return (
     <div className="contentWrap">
@@ -68,7 +58,7 @@ function Passenger(props) {
       </div>
 
       <div className="externalRide">
-        <Content setdate={setdate} date={date} />
+        <Content />
       </div>
 
       {/* 더보기 버튼 */}

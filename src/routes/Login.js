@@ -65,10 +65,6 @@ function Login(props) {
         </ul>
       </div>
 
-      <div className="google">
-        <img src={google} className="googleLogo" />
-      </div>
-
       <div className="email">
         <button
           className="emailBtn"
