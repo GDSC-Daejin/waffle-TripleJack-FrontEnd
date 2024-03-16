@@ -4,18 +4,24 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
+import data from "../data.js";
 
 import "swiper/css";
 import "swiper/css/navigation"; //캐러셀 라이브러리
 
-import { useState, useEffect } from "react";
 import "../App.css";
 
 import Content from "../component/content/content.js";
 import BottomNav from "../component/bottomNav.js";
+import { useSelector, useDispatch } from "react-redux";
+import { changeState } from "../store.js";
+import { useEffect } from "react";
 
 function Passenger(props) {
-  const [date, setdate] = useState();
+  let dispatch = useDispatch();
+  let a = useSelector((state) => {
+    return state;
+  });
 
   return (
     <div className="contentWrap">
@@ -50,10 +56,21 @@ function Passenger(props) {
       </div>
 
       <div className="selectWrap">
-        <DropdownButton id="dropdown-basic-button" title="지역" style={{}}>
-          <Dropdown.Item href="#/action-1">서울</Dropdown.Item>
-          <Dropdown.Item href="#/action-1">경기</Dropdown.Item>
-          <Dropdown.Item href="#/action-2">인천</Dropdown.Item>
+        <DropdownButton id="dropdown-basic-button" title="등하교">
+          <Dropdown.Item
+            onClick={() => {
+              dispatch(changeState(0));
+            }}
+          >
+            등교
+          </Dropdown.Item>
+          <Dropdown.Item
+            onClick={() => {
+              dispatch(changeState(1));
+            }}
+          >
+            하교
+          </Dropdown.Item>
         </DropdownButton>
       </div>
 

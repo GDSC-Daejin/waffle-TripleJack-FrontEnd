@@ -8,23 +8,25 @@ function Trip(props) {
   const [carNum, setCarNum] = useState(null); //차번호
   const [pay, setPay] = useState(null); //보증금
   const [time, setTime] = useState(null);
+  const [people, setPeople] = useState(null);
+  const [schoolState, setSchoolState] = useState(null);
 
   return (
     <div className={styles["black-bg"]}>
       <div className={styles["tripBox"]}>
-        <select>
-          <option>등교</option>
-          <option>하교</option>
-        </select>
-
-        <select>
-          <option>서울</option>
-          <option>경기</option>
-          <option>인천</option>
+        <select
+          onChange={(e) => {
+            setSchoolState(e.target.value);
+          }}
+        >
+          <option>등하교 구분</option>
+          <option value="0">등교</option>
+          <option value="1">하교</option>
         </select>
 
         <div>
           <select>
+            <option>날짜</option>
             <option>2월5일</option>
             <option>2월6일</option>
             <option>2월7일</option>
@@ -36,6 +38,7 @@ function Trip(props) {
               setTime(e.target.value);
             }}
           >
+            <option>시간</option>
             <option>9:00</option>
             <option>9:10</option>
             <option>9:20</option>
@@ -66,6 +69,12 @@ function Trip(props) {
             setPay(e.target.value);
           }}
         ></input>
+        <span>모집인원</span>
+        <input
+          onChange={(e) => {
+            setPeople(e.target.value);
+          }}
+        ></input>
 
         <button
           onClick={() => {
@@ -76,6 +85,8 @@ function Trip(props) {
               carNum: { value: carNum, type: typeof carNum },
               pay: { value: pay, type: typeof pay },
               time: { value: time, type: typeof time },
+              people: { value: people, type: typeof people },
+              schoolState: { value: schoolState, type: typeof schoolState },
 
               // const [dep, setDep] = useState(null); // 출발지
               // const [des, setDes] = useState(null); // 도착지
