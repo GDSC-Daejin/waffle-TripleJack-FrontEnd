@@ -28,14 +28,14 @@ function Content(props) {
   return (
     <div>
       {filteredData.map(function (a, i) {
-        const toggleModal = () => {
+        const toggleModal = (e) => {
           // 클릭된 항목의 모달 상태를 토글합니다.
           setActiveModalIndex(activeModalIndex === i ? null : i);
         };
 
         return (
-          <div key={i} onClick={toggleModal}>
-            <div className={styles["contentBox"]}>
+          <div>
+            <div className={styles["contentBox"]} key={i} onClick={toggleModal}>
               <div>{a.time.value}</div>
               <div>{a.des.value}</div>
               <div>{a.people.value}</div>
@@ -46,6 +46,7 @@ function Content(props) {
                 <div>{a.time.value}</div>
                 <div>{a.des.value}</div>
                 <div>{a.people.value}</div>
+                <button>신청</button>
               </div>
             )}
           </div>
