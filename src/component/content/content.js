@@ -36,16 +36,17 @@ function Content(props) {
         return (
           <div>
             <div className={styles["contentBox"]} key={i} onClick={toggleModal}>
-              <div>{a.time.value}</div>
-              <div>{a.des.value}</div>
-              <div>{a.people.value}</div>
+              <div>{a.goTime.value.hours}</div>
+
+              {/* <div>{a.des.value}</div> */}
+              <div>{a.recruit.value}</div>
             </div>
 
             {activeModalIndex === i && (
               <div className={styles["contentModal"]}>
-                <div>{a.time.value}</div>
-                <div>{a.des.value}</div>
-                <div>{a.people.value}</div>
+                <div>{a.goTime.value.hours}</div>
+                {/* <div>{a.des.value}</div> */}
+                <div>{a.recruit.value}</div>
                 <button>신청</button>
               </div>
             )}

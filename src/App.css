@@ -13,12 +13,13 @@
 .contentWrap {
   display: flex;
   flex-direction: column;
+  /* background-color: antiquewhite; */
 
   width: 100%;
   margin: auto;
 
   overflow: auto;
-  height: 100vh;
+  height: auto;
 
   align-items: center;
 
@@ -43,6 +44,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+
   margin-left: 0;
   margin-right: 0;
 }
@@ -64,6 +66,7 @@
   width: 90%;
   padding-top: 5%;
   padding-bottom: 2%;
+  margin: auto;
 }
 
 .loginBtn {
@@ -107,8 +110,11 @@
 }
 
 .dayWrap {
-  width: 100%;
-  padding: 5%;
+  width: 90%;
+  padding: 5px;
+  border: 1px solid #4040ff;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 .list-group-horizontal {
@@ -171,6 +177,7 @@
   display: flex;
   margin: 0;
   padding-left: 0; /* 추가 */
+  justify-content: space-between;
 }
 
 .daylist li {
@@ -178,14 +185,4 @@
   border: 2px solid;
   border-radius: 5px;
   margin: 3px;
-}
-
-.signDiv {
-  text-align: center;
-  margin: 15px;
-}
-.signInput {
-  margin: 3px;
-  padding: 3px;
-  display: block;
 }

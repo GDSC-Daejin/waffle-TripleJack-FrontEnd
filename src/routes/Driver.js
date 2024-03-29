@@ -8,11 +8,26 @@ import Trip from "../component/trip/trip.js";
 
 import { useState } from "react";
 import "../App.css";
-import SwipeToSlide from "../component/cau.js";
 import BottomNav from "../component/bottomNav.js";
 
 function Main(props) {
-  var [date, setdate] = useState();
+  const today = new Date();
+  // 현재 날짜를 가져옵니다.
+
+  const formattedDate = [];
+  for (var i = 0; i < 7; i++) {
+    // 오늘 날짜에 i일을 더합니다.
+    const nextDay = new Date(today);
+    nextDay.setDate(today.getDate() + i);
+
+    // 원하는 형식으로 날짜를 설정합니다.
+    formattedDate.push(`${nextDay.getMonth() + 1}. ${nextDay.getDate()}`);
+  }
+  console.log(formattedDate);
+
+  console.log(formattedDate);
+  // 원하는 형식으로 날짜를 설정합니다.
+
   var [trip, setTrip] = useState(false);
   return (
     <div className="contentWrap">
@@ -38,7 +53,11 @@ function Main(props) {
         </DropdownButton>
       </div>
       <div className="dayWrap">
-        <SwipeToSlide setdate={setdate} />
+        <ul className="daylist">
+          {formattedDate.map(function (a, i) {
+            return <li>{a}</li>;
+          })}
+        </ul>
       </div>
 
       <div>

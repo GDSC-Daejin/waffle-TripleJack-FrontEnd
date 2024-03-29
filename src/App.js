@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Login from "./routes/Login.js";
 import Passenger from "./routes/Passenger.js";
 import Driver from "./routes/Driver.js";
-import Sign from "./routes/Sign.js";
+import Sign from "./routes/Sign/Sign.js";
 import Home from "./routes/Home.js";
 
 function App() {

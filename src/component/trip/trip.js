@@ -183,6 +183,7 @@ function Trip(props) {
 
               data.push(tripSet); //api 주소로 보내는 axios 로 수정
               console.log(tripSet);
+              console.log(data);
             } else {
               alert("빈칸이 없는지 확인하세요");
             }
