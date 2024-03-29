@@ -1,19 +1,23 @@
-import { Form, Button, Navbar, Container } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
-<Navbar className="bg-body-tertiary">
-  <Container fluid>
-    <Navbar.Brand href="#">대카풀</Navbar.Brand>
+function TopNav() {
+  let navigate = useNavigate;
+  return (
+    <div className="homeDiv Top">
+      <p
+        className="homeTopFont"
+        onClick={() => {
+          navigate("/home");
+        }}
+      >
+        대카풀
+      </p>
+      <img
+        src={process.env.PUBLIC_URL + "/images/alram.png"}
+        style={{ height: "30px", width: "30px" }}
+      ></img>
+    </div>
+  );
+}
 
-    <Form className="d-flex">
-      <Form.Control
-        type="search"
-        placeholder="지역명으로 검색"
-        className="me-2"
-        aria-label="Search"
-      />
-      <Button variant="outline-success">Search</Button>
-    </Form>
-  </Container>
-</Navbar>;
-
-export default topNav;
+export default TopNav;

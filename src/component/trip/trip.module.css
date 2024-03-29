@@ -21,3 +21,59 @@
 input {
   display: block;
 }
+
+.black-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 배경을 반투명한 검은색으로 설정 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999; /* 다른 요소들 위에 오버레이가 나타나도록 z-index 설정 */
+}
+
+.tripBox {
+  background: white;
+  height: 400px;
+  width: 300px;
+  padding: 20px;
+  border-radius: 10px;
+  border: solid 1px #d8d8d8;
+}
+
+input {
+  display: block;
+  width: 90%;
+  border: solid 1px #d8d8d8;
+  border-radius: 5px;
+}
+
+.inputBoxWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  gap: 5px;
+}
+
+.dropBoxWrap {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.dropBox {
+  color: #d8d8d8;
+  border: solid 1px #d8d8d8;
+  border-radius: 5px;
+}
+.btnWrap {
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}

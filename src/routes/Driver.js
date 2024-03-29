@@ -1,81 +1,47 @@
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Form, Button, Navbar, Container } from "react-bootstrap";
-import Dropdown from "react-bootstrap/Dropdown";
-import DropdownButton from "react-bootstrap/DropdownButton";
-import React from "react";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import Trip from "../component/trip/trip.js";
-
-import { useState } from "react";
-import "../App.css";
 import BottomNav from "../component/bottomNav.js";
+import Week from "../component/week.js";
+import { setWeekEnd } from "../store.js";
+import { useNavigate } from "react-router-dom";
+import TopNav from "../component/topNav.js";
 
 function Main(props) {
-  const today = new Date();
-  // 현재 날짜를 가져옵니다.
+  let navigate = useNavigate;
+  const [nowDay, setNowDay] = useState(null);
+  const [trip, setTrip] = useState(false);
+  let dispatch = useDispatch();
+  let weekEnd = useSelector((state) => {
+    return state.weekEnd;
+  });
 
-  const formattedDate = [];
-  for (var i = 0; i < 7; i++) {
-    // 오늘 날짜에 i일을 더합니다.
-    const nextDay = new Date(today);
-    nextDay.setDate(today.getDate() + i);
+  useEffect(() => {
+    const today = new Date();
+    const tempFormattedDate = [];
 
-    // 원하는 형식으로 날짜를 설정합니다.
-    formattedDate.push(`${nextDay.getMonth() + 1}. ${nextDay.getDate()}`);
-  }
-  console.log(formattedDate);
+    for (var i = 0; i < 7; i++) {
+      const nextDay = new Date(today);
+      nextDay.setDate(today.getDate() + i);
+      tempFormattedDate.push(`${nextDay.getMonth() + 1}. ${nextDay.getDate()}`);
+    }
 
-  console.log(formattedDate);
-  // 원하는 형식으로 날짜를 설정합니다.
+    // 계산된 날짜 배열을 setWeekEnd 액션의 payload로 전달하여 상태 업데이트
+    dispatch(setWeekEnd(tempFormattedDate));
+  }, [dispatch]);
 
-  var [trip, setTrip] = useState(false);
   return (
     <div className="contentWrap">
-      <Navbar className="bg-body-tertiary">
-        <Container fluid>
-          <Navbar.Brand href="#">Daejin Univ</Navbar.Brand>
-
-          <Form className="d-flex">
-            <Form.Control
-              type="search"
-              placeholder="지역명으로 검색"
-              className="me-2"
-              aria-label="Search"
-            />
-            <Button variant="outline-success">Search</Button>
-          </Form>
-        </Container>
-      </Navbar>
-      <div className="selectWrap">
-        <DropdownButton id="dropdown-basic-button" title="탑승자">
-          <Dropdown.Item href="#/action-1">탑승자</Dropdown.Item>
-          <Dropdown.Item href="#/action-2">운전자</Dropdown.Item>
-        </DropdownButton>
-      </div>
-      <div className="dayWrap">
-        <ul className="daylist">
-          {formattedDate.map(function (a, i) {
-            return <li>{a}</li>;
-          })}
-        </ul>
-      </div>
-
+      <TopNav />
+      <Week weekEnd={weekEnd} setNowDay={setNowDay} /> {/* 날짜 */}
       <div>
-        <button
-          onClick={() => {
-            setTrip(true);
-          }}
-        >
+        <button className="tripBtn" onClick={() => setTrip(true)}>
           여정 만들기
         </button>
       </div>
-      <div>
-        <div>나의 여정</div>
-      </div>
-
-      {trip === true ? <Trip setTrip={setTrip} /> : null}
-
-      <BottomNav></BottomNav>
+      {trip ? <Trip setTrip={setTrip} /> : null}
+      <BottomNav />
     </div>
   );
 }

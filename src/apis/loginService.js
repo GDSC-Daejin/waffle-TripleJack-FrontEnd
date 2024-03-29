@@ -13,7 +13,6 @@ export const loginService = async (studId, passWord) => {
     });
 
     // 로그인 요청이 성공적으로 완료되면, 데이터 반환
-
     return loginRequest.data;
   } catch (error) {
     // 에러 처리

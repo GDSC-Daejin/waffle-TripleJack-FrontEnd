@@ -52,7 +52,11 @@ function BottomNav() {
             />
             <p style={{ margin: "0", fontSize: "15px" }}>운전자</p>
           </li>
-          <li>
+          <li
+            onClick={() => {
+              navigate("/mypage");
+            }}
+          >
             <img
               src="/images/mypage.png"
               alt="home"

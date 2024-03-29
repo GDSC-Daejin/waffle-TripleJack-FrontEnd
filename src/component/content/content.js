@@ -13,8 +13,6 @@ function Content(props) {
     return state;
   });
 
-  console.log(a.nowState);
-
   useEffect(() => {
     // data를 필터링하고 결과를 filteredData 상태에 설정합니다.
     let newFilteredData = data.filter(
@@ -36,16 +34,34 @@ function Content(props) {
         return (
           <div>
             <div className={styles["contentBox"]} key={i} onClick={toggleModal}>
-              <div>{a.goTime.value.hours}</div>
-
-              {/* <div>{a.des.value}</div> */}
-              <div>{a.recruit.value}</div>
+              {a.nowState === 0 ? (
+                <>
+                  <div>
+                    {a.goTime.value.hours}:{a.goTime.value.minutes}
+                  </div>
+                  <div>{a.des.value}</div>
+                  <div>{a.dep.value}</div>
+                  <div>{a.recruit.value}</div>
+                </>
+              ) : (
+                <>
+                  <div>
+                    {a.goTime.value.hours}:{a.goTime.value.minutes}
+                  </div>
+                  <div>{a.dep.value}</div>
+                  <div>{a.des.value}</div>
+                  <div>{a.recruit.value}</div>
+                </>
+              )}
             </div>
 
             {activeModalIndex === i && (
               <div className={styles["contentModal"]}>
-                <div>{a.goTime.value.hours}</div>
-                {/* <div>{a.des.value}</div> */}
+                <div>
+                  {a.goTime.value.hours}:{a.goTime.value.minutes}
+                </div>
+                <div>{a.des.value}</div>
+                <div>{a.dep.value}</div>
                 <div>{a.recruit.value}</div>
                 <button>신청</button>
               </div>
