@@ -1,0 +1,62 @@
+.InputWrap {
+  width: 90%;
+  background-color: white;
+  height: 150px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin-left: 0;
+  margin-right: 0;
+}
+.idpw {
+  display: block;
+  margin: 10px;
+  border-top: none; /* 위쪽 테두리를 없애기 위해 추가 */
+  border-left: none; /* 왼쪽 테두리를 없애기 위해 추가 */
+  border-right: none; /* 오른쪽 테두리를 없애기 위해 추가 */
+  border-bottom: 1px solid; /* 아래쪽 테두리를 굵게 강조하기 위해 추가 */
+  border-radius: 0;
+}
+
+.idpw::placeholder {
+  color: gray; /* 원하는 색상으로 변경하세요 */
+  font-weight: bold;
+}
+
+.loginBtnWrap {
+  width: 90%;
+  padding-top: 5%;
+  padding-bottom: 2%;
+  margin: auto;
+}
+
+.loginBtn {
+  width: 100%;
+  background-color: #4040ff;
+  color: white;
+  font-weight: bold;
+  height: 50px;
+  font-size: large;
+  border: none;
+  border-radius: 5px;
+}
+
+.email {
+  padding: 2%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30%;
+}
+
+.emailBtn {
+  border: solid 1px #4040ff;
+  font-weight: bold;
+  font-size: 800;
+  width: 70%;
+  height: 50px;
+  background-color: white;
+  border-radius: 5px;
+}

@@ -1,13 +1,14 @@
 import React from "react";
-import "../App.css";
-import "../Home.css";
-import BottomNav from "../component/bottomNav";
+import "../../App.css";
+import styles from "../Home/Home.module.css";
+import "../Home/Home.module.css";
+import BottomNav from "../../component/bottomNav";
 import { useNavigate } from "react-router-dom";
 function Home(props) {
   const navigate = useNavigate();
   return (
     <div className="contentWrap">
-      <div className="homeDiv Top">
+      <div className={`${styles.homeDiv} ${styles.Top}`}>
         <p
           className="homeTopFont"
           onClick={() => {
@@ -17,12 +18,12 @@ function Home(props) {
           대카풀
         </p>
         <img
-          src={process.env.PUBLIC_URL + "/images/alram.png"}
+          src={process.env.PUBLIC_URL + "./images/alram.png"}
           style={{ height: "30px", width: "30px" }}
         ></img>
       </div>
 
-      <div className="homeDiv">
+      <div className={styles.homeDiv}>
         <img
           src={process.env.PUBLIC_URL + "/images/123.jpg"}
           style={{
@@ -34,9 +35,9 @@ function Home(props) {
         />
       </div>
 
-      <div className="homeDiv select">
+      <div className={`${styles.homeDiv} ${styles.select}`}>
         <div
-          className="selectImg"
+          className={styles.selectImg}
           onClick={() => {
             navigate("/passenger");
           }}
@@ -48,7 +49,7 @@ function Home(props) {
           <p>탑승자</p>
         </div>
         <div
-          className="selectImg"
+          className={styles.selectImg}
           onClick={() => {
             navigate("/driver");
           }}
@@ -62,11 +63,11 @@ function Home(props) {
       </div>
 
       <div
-        className="homeDiv"
+        className={styles.homeDiv}
         style={{ backgroundColor: "lightgrey", flex: "1" }}
       >
         <p>최신 게시글</p>
-        <div className="homeList">
+        <div className={styles.homeList}>
           <img
             src={process.env.PUBLIC_URL + "/images/profile.png"}
             style={{ width: "50px", height: "50px" }}

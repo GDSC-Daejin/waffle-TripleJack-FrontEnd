@@ -2,11 +2,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 import { Routes, Route } from "react-router-dom";
-import Login from "./routes/Login.js";
+import Login from "./routes/Login/Login.js";
 import Passenger from "./routes/Passenger.js";
 import Driver from "./routes/Driver.js";
 import Sign from "./routes/Sign/Sign.js";
-import Home from "./routes/Home.js";
+import Home from "./routes/Home/Home.js";
 import { CookiesProvider } from "react-cookie";
 import Mypage from "./routes/Mypage.js";
 

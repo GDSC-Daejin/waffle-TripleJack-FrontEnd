@@ -173,12 +173,12 @@ function Trip(props) {
                 carNum: { value: carNum, type: typeof carNum },
                 goTime: { value: goTime, type: typeof goTime },
                 recruit: { value: recruit, type: typeof recruit },
-                des: { value: des },
-                dep: { value: dep },
+                des: { value: des, type: typeof des },
+                dep: { value: dep, type: typeof dep },
                 schoolState: { value: schoolState, type: typeof schoolState },
-                selectDate: { value: selectDate },
+                selectDate: { value: selectDate }, //YY-MM-DD
               }; //DB에 전달할 객체
-
+              console.log(tripSet);
               if (tripCheck === false) {
                 props.setTrip(false); // 창닫기
 

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginService } from "../apis/loginService"; // otpService는 예시입니다.
+import { loginService } from "../../apis/loginService";
 import { useCookies } from "react-cookie";
+import styles from "./Login.module.css";
 
 function Login(props) {
   const navigate = useNavigate();
@@ -37,34 +38,33 @@ function Login(props) {
     <div className="contentWrap">
       <div className="logo">대카풀</div>
 
-      <form onSubmit={handleLogin} className="InputWrap">
+      <form onSubmit={handleLogin} className={styles.InputWrap}>
         <input
-          className="idpw"
+          className={styles.idpw}
           type="text"
           placeholder="아이디 입력"
           value={studId}
           onChange={(e) => setStudId(e.target.value)}
         />
         <input
-          className="idpw"
+          className={styles.idpw}
           type="password"
           placeholder="비밀번호 입력"
           value={passWord}
           onChange={(e) => setPassWord(e.target.value)}
         />
-        <div className="loginBtnWrap">
-          <button type="submit" className="loginBtn">
+        <div className={styles.loginBtnWrap}>
+          <button type="submit" className={styles.loginBtn}>
             로그인
           </button>
         </div>
       </form>
 
-      <div className="email">
+      <div className={styles.email}>
         <button
-          className="emailBtn"
+          className={styles.emailBtn}
           onClick={() => {
             navigate("/sign");
-            // navigate("/Driver");
           }}
         >
           가입하기
