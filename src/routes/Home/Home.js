@@ -66,18 +66,14 @@ function Home(props) {
         className={styles.homeDiv}
         style={{ backgroundColor: "lightgrey", flex: "1" }}
       >
-        <p>최신 게시글</p>
         <div className={styles.homeList}>
-          <img
-            src={process.env.PUBLIC_URL + "/images/profile.png"}
-            style={{ width: "50px", height: "50px" }}
-          ></img>
-          <span>홍길동</span>
-          <b style={{ display: "block" }}>3.4 노원역 카풀</b>
-          <p>날짜:3.4</p>
-          <p>출발지</p>
-          <p>도착지</p>
-          <p>보증금</p>
+          <div>최신 게시글</div>
+          <div>
+            <p>오늘날짜로 할거임</p>
+            <p>출발지</p>
+            <p>도착지</p>
+            <p>모집인원</p>
+          </div>
         </div>
       </div>
       <BottomNav></BottomNav>

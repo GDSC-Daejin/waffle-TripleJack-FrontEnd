@@ -1,13 +1,8 @@
 import API from "./api";
 
-export const loginService = async (studId, passWord) => {
-  const loginUserInfo = {
-    studID: studId,
-    password: passWord,
-  };
-
+export const register = async () => {
   try {
-    const loginRequest = await API.post("/login", loginUserInfo, {
+    const loginRequest = await API.post("/register", formData, {
       headers: {
         "Content-Type": "application/json",
       },

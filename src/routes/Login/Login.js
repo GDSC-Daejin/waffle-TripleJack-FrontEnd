@@ -12,9 +12,9 @@ function Login(props) {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+
     try {
       const response = await loginService(studId, passWord);
-      console.log(response);
 
       // 로그인 성공 시 쿠키에 토큰 저장
       setCookie("accessToken", response.accessToken, {
@@ -25,6 +25,7 @@ function Login(props) {
         path: "/",
         maxAge: 86400,
       }); // 리프레시 토큰, 1일 유효
+      console.log(cookies); // accessToken 쿠키 값 확인
 
       navigate("/home");
     } catch (error) {

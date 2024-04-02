@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import styles from "../Sign/Sign.module.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Sign() {
   const [userName, setUserName] = useState(""); //이름
@@ -22,7 +23,36 @@ function Sign() {
       setSignUpCheck(true);
     }
   }, [numberState, idState, pwState, isPwcheck]); //모든 인풋칸에 맞는 값일 때 가입버튼 활성 변수
-
+  const handleSignUp = async () => {
+    const userInfo = {
+      studID: studId,
+      password: passWord,
+      userName,
+      callNum,
+    };
+    try {
+      console.log(userInfo);
+      const response = await axios.post(
+        "http://146.56.42.61:4000/register",
+        userInfo,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (response.status === 201) {
+        // 응답 상태가 201인 경우
+        console.log("회원가입 성공");
+        alert("회원가입 완료");
+        navigate("/");
+      } else {
+        throw new Error("회원가입 실패");
+      }
+    } catch (error) {
+      console.error("회원가입 중 에러 발생:", error);
+    }
+  };
   return (
     <div className="contentWrap">
       <div className={styles.signDiv}>
@@ -139,17 +169,7 @@ function Sign() {
       <button
         className={styles.signBtn}
         disabled={signUpCheck}
-        onClick={() => {
-          const userInfo = {
-            userName: { value: userName, type: typeof userName }, //뭔가 잘못된 거 같음
-            studId: { value: studId, type: typeof studId },
-            passWord: { value: passWord, type: typeof passWord },
-            callNum: { value: callNum, type: typeof callNum },
-          };
-          navigate("/       ");
-
-          console.log(userInfo);
-        }}
+        onClick={handleSignUp}
       >
         가입하기
       </button>

@@ -4,6 +4,9 @@
   src: url("./fonts/ADLYeonnamdongSlanted.otf");
 }
 
+.App {
+  background-color: #b3e0ff;
+}
 .homeTopFont {
   font-family: "ADLYeonnamdong";
   font-size: 30px;
@@ -19,16 +22,13 @@
 .contentWrap {
   display: flex;
   flex-direction: column;
-  /* background-color: antiquewhite; */
 
   width: 100%;
   margin: auto;
-
+  background-color: white;
   overflow: auto;
-  height: auto;
-
+  height: 100vh;
   align-items: center;
-
   padding-bottom: 60px;
 }
 
@@ -76,6 +76,7 @@
   width: 100%;
   padding: 20px;
   background-color: white;
+  height: 100%;
 }
 
 .bottom-nav {
@@ -152,4 +153,15 @@
 
 .customDrop {
   color: red;
+}
+
+.homeDiv {
+  width: 100%;
+  padding: 10px;
+}
+.Top {
+  display: flex;
+  justify-content: space-between;
+  /* background-color: lightgray; */
+  align-items: center;
 }
