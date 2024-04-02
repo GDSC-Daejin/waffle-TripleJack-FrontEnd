@@ -3,11 +3,37 @@ import styles from "../trip/trip.module.css";
 import data from "../../data.js";
 import { useSelector } from "react-redux";
 import "../../App.css";
+import { insertService } from "../../apis/insertService.js";
 
 function Trip(props) {
   const weekEnd = useSelector((state) => {
     return state.weekEnd;
   });
+
+  const handleInsert = async (e) => {
+    // tripSet 정의를 insertService 호출 전으로 이동
+    const tripSet = {
+      carNum: { value: carNum, type: typeof carNum },
+      goTime: { value: goTime, type: typeof goTime },
+      recruit: { value: recruit, type: typeof recruit },
+      des: { value: des, type: typeof des },
+      dep: { value: dep, type: typeof dep },
+      schoolState: { value: schoolState, type: typeof schoolState },
+      selectDate: { value: selectDate, type: typeof selectDate }, // YY-MM-DD
+    };
+
+    try {
+      // tripSet을 사용하여 서비스 호출
+      console.log(tripSet);
+      const response = await insertService(tripSet);
+      // 성공적인 응답 처리
+      console.log("응답 성공:", response);
+    } catch (error) {
+      // 에러 처리
+      console.error("삽입 실패:", error); // 메시지 수정
+    }
+  };
+
   const [dep, setDep] = useState(null); // 출발지
   const [des, setDes] = useState(null); // 출발지
   const [carNum, setCarNum] = useState(null); //차번호
@@ -15,6 +41,7 @@ function Trip(props) {
     hours: null,
     minutes: null,
   });
+
   const [recruit, setRecruit] = useState(null);
   const [schoolState, setSchoolState] = useState(null);
   const [tripCheck, setTripCheck] = useState(true);
@@ -168,21 +195,9 @@ function Trip(props) {
           <button
             className="tripBtn"
             onClick={() => {
-              const tripSet = {
-                //유저의 토큰정보도 같이 보내야함
-                carNum: { value: carNum, type: typeof carNum },
-                goTime: { value: goTime, type: typeof goTime },
-                recruit: { value: recruit, type: typeof recruit },
-                des: { value: des, type: typeof des },
-                dep: { value: dep, type: typeof dep },
-                schoolState: { value: schoolState, type: typeof schoolState },
-                selectDate: { value: selectDate }, //YY-MM-DD
-              }; //DB에 전달할 객체
-              console.log(tripSet);
+              handleInsert();
               if (tripCheck === false) {
                 props.setTrip(false); // 창닫기
-
-                data.push(tripSet); //api 주소로 보내는 axios 로 수정
               } else {
                 alert("빈칸이 없는지 확인하세요");
               }
