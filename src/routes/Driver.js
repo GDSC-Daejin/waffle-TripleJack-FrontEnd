@@ -25,7 +25,13 @@ function Main(props) {
     for (var i = 0; i < 7; i++) {
       const nextDay = new Date(today);
       nextDay.setDate(today.getDate() + i);
-      tempFormattedDate.push(`${nextDay.getMonth() + 1}. ${nextDay.getDate()}`);
+      tempFormattedDate.push(
+        `${nextDay.getFullYear().toString().slice(-2)}-${(
+          nextDay.getMonth() + 1
+        )
+          .toString()
+          .padStart(2, "0")}-${nextDay.getDate().toString().padStart(2, "0")}`
+      );
     }
 
     dispatch(setWeekEnd(tempFormattedDate));

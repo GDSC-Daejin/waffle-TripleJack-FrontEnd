@@ -105,11 +105,17 @@ function Trip(props) {
             }}
           >
             <option>날짜</option>
-            {weekEnd.map((a, i) => (
-              <option value={a} key={i}>
-                {a}
-              </option>
-            ))}
+            {weekEnd.map((a, i) => {
+              // 날짜 문자열에서 월과 일 부분을 추출합니다.
+              const parts = a.split("-"); // 'yy-mm-dd' 형식을 분리합니다.
+              const month = parts[1]; // 두 번째 부분이 월입니다.
+              const date = parts[2]; // 세 번째 부분이 일입니다.
+              return (
+                <option value={a} key={i}>
+                  {`${month}월 ${date}일`}
+                </option>
+              );
+            })}
           </select>
 
           <div>

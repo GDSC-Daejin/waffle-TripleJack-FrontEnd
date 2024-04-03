@@ -21,6 +21,7 @@ function Passenger(props) {
     return state;
   });
   const [nowDay, setNowDay] = useState(null);
+
   useEffect(() => {
     const today = new Date();
     const tempFormattedDate = [];
@@ -28,10 +29,15 @@ function Passenger(props) {
     for (var i = 0; i < 7; i++) {
       const nextDay = new Date(today);
       nextDay.setDate(today.getDate() + i);
-      tempFormattedDate.push(`${nextDay.getMonth() + 1}. ${nextDay.getDate()}`);
+      tempFormattedDate.push(
+        `${nextDay.getFullYear().toString().slice(-2)}-${(
+          nextDay.getMonth() + 1
+        )
+          .toString()
+          .padStart(2, "0")}-${nextDay.getDate().toString().padStart(2, "0")}`
+      );
     }
 
-    // 계산된 날짜 배열을 setWeekEnd 액션의 payload로 전달하여 상태 업데이트
     dispatch(setWeekEnd(tempFormattedDate));
   }, [dispatch]);
 
