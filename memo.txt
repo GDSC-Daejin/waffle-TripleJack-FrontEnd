@@ -1,6 +1,0 @@
-homeDiv 
-Top
-homeTopFont
-selectImg
-select
-homeList

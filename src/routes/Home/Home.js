@@ -1,11 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../../App.css";
 import styles from "../Home/Home.module.css";
 import "../Home/Home.module.css";
 import BottomNav from "../../component/bottomNav";
 import { useNavigate } from "react-router-dom";
+import post from "../../post";
 function Home(props) {
   const navigate = useNavigate();
+
+  const [lastPost, setLastPost] = useState("");
+
+  useEffect(() => {
+    if (post.length > 0) {
+      setLastPost(post.length - 1);
+    }
+  }, [post]);
+
+  console.log(post);
 
   return (
     <div className="contentWrap">
@@ -68,12 +79,22 @@ function Home(props) {
         style={{ backgroundColor: "lightgrey", flex: "1" }}
       >
         <div className={styles.homeList}>
-          <div>최신 게시글</div>
+          <div style={{ fontWeight: "500", fontSize: "20px" }}>최신 게시글</div>
           <div>
-            <p>오늘날짜로 할거임</p>
-            <p>출발지</p>
-            <p>도착지</p>
-            <p>모집인원</p>
+            {post.length > 0 && post[lastPost] ? (
+              <>
+                <p>날짜 : {post[lastPost].selectDate.value}</p>
+                <p>
+                  등하교 :{" "}
+                  {post[lastPost].schoolState.value === "0" ? "등교" : "하교"}
+                </p>
+                <p>출발지 : {post[lastPost].dep.value}</p>
+                <p>도착지 : {post[lastPost].des.value}</p>
+                <p>모집인원 :{post[lastPost].recruit.value}</p>
+              </>
+            ) : (
+              <p>게시글이 없습니다.</p>
+            )}
           </div>
         </div>
       </div>

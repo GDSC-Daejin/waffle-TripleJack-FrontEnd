@@ -1,5 +1,5 @@
 import styles from "../content/content.module.css";
-import data from "../../data.js";
+import data from "../../post.js";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
@@ -8,20 +8,21 @@ function Content(props) {
   // filteredData를 상태로 관리하기 위해 useState를 추가합니다.
   const [filteredData, setFilteredData] = useState([]);
 
-  // useSelector를 사용하여 리덕스 스토어의 상태를 가져옵니다.
-  let a = useSelector((state) => {
-    return state;
-  });
+  const { nowState, today } = useSelector((state) => ({
+    nowState: state.nowState,
+    today: state.today,
+  }));
 
   useEffect(() => {
     // data를 필터링하고 결과를 filteredData 상태에 설정합니다.
     let newFilteredData = data.filter(
-      (item) => parseInt(item.schoolState.value) === a.nowState
+      (item) =>
+        parseInt(item.schoolState.value) === nowState &&
+        item.selectDate.value === today
     );
-    setFilteredData(newFilteredData);
 
-    console.log(newFilteredData);
-  }, [a.nowState]); // 의존성 배열에 a.nowState를 추가함으로써, 이 값이 변경될 때마다 useEffect가 실행됩니다.
+    setFilteredData(newFilteredData);
+  }, [nowState, today]); // 의존성 배열에 a.nowState를 추가함으로써, 이 값이 변경될 때마다 useEffect가 실행됩니다.
 
   return (
     <div>
@@ -32,25 +33,25 @@ function Content(props) {
         };
 
         return (
-          <div>
-            <div className={styles["contentBox"]} key={i} onClick={toggleModal}>
-              {a.nowState === 0 ? (
+          <div key={i}>
+            <div className={styles["contentBox"]} onClick={toggleModal}>
+              {nowState === 0 ? (
                 <>
                   <div>
-                    {a.goTime.value.hours}:{a.goTime.value.minutes}
+                    시간: {a.goTime.value.hours}:{a.goTime.value.minutes}
                   </div>
-                  <div>{a.des.value}</div>
-                  <div>{a.dep.value}</div>
-                  <div>{a.recruit.value}</div>
+                  <div>출발지: {a.dep.value}</div>
+                  <div>도착지: {a.des.value}</div>
+                  <div>모집인원: {a.recruit.value}</div>
                 </>
               ) : (
                 <>
                   <div>
-                    {a.goTime.value.hours}:{a.goTime.value.minutes}
+                    시간: {a.goTime.value.hours}:{a.goTime.value.minutes}
                   </div>
-                  <div>{a.dep.value}</div>
-                  <div>{a.des.value}</div>
-                  <div>{a.recruit.value}</div>
+                  <div>출발지: {a.dep.value}</div>
+                  <div>도착지: {a.des.value}</div>
+                  <div>모집인원:{a.recruit.value}</div>
                 </>
               )}
             </div>
@@ -58,12 +59,20 @@ function Content(props) {
             {activeModalIndex === i && (
               <div className={styles["contentModal"]}>
                 <div>
-                  {a.goTime.value.hours}:{a.goTime.value.minutes}
+                  시간: {a.goTime.value.hours}:{a.goTime.value.minutes}
                 </div>
-                <div>{a.des.value}</div>
-                <div>{a.dep.value}</div>
-                <div>{a.recruit.value}</div>
-                <button>신청</button>
+                <div>출발지: {a.dep.value}</div>
+                <div>도착지: {a.des.value}</div>
+                <div>모집인원: {a.recruit.value}</div>
+                <button
+                  onClick={() => {
+                    alert("신청이 완료되었습니다.");
+                    setActiveModalIndex("0");
+                  }}
+                  className="tripBtn"
+                >
+                  신청
+                </button>
               </div>
             )}
           </div>

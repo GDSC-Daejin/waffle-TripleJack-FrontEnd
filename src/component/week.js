@@ -1,4 +1,9 @@
-function Week({ weekEnd, setNowDay }) {
+import { useDispatch } from "react-redux";
+import { setToday } from "../store";
+
+function Week({ weekEnd }) {
+  const dispatch = useDispatch();
+
   return (
     <div className="dayWrap">
       <ul className="daylist">
@@ -7,11 +12,12 @@ function Week({ weekEnd, setNowDay }) {
           const year = parts[0]; // 첫 번째 부분이 연도입니다.
           const month = parts[1]; // 두 번째 부분이 월입니다.
           const date = parts[2]; // 세 번째 부분이 일입니다.
+
           return (
             <li
               key={i}
               onClick={() => {
-                setNowDay(a); // 전체 날짜 문자열을 setNowDay 함수에 전달합니다.
+                dispatch(setToday(`${year}-${month}-${date}`));
               }}
             >
               {`${month}월 ${date}일`}

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import styles from "../trip/trip.module.css";
-import data from "../../data.js";
+import post from "../../post.js";
 import { useSelector } from "react-redux";
 import "../../App.css";
-import { insertService } from "../../apis/insertService.js";
+import { insertService } from "../../apis/insertService.js"; //api 모듈
 
 function Trip(props) {
   const weekEnd = useSelector((state) => {
@@ -11,7 +11,6 @@ function Trip(props) {
   });
 
   const handleInsert = async (e) => {
-    // tripSet 정의를 insertService 호출 전으로 이동
     const tripSet = {
       carNum: { value: carNum, type: typeof carNum },
       goTime: { value: goTime, type: typeof goTime },
@@ -19,8 +18,8 @@ function Trip(props) {
       des: { value: des, type: typeof des },
       dep: { value: dep, type: typeof dep },
       schoolState: { value: schoolState, type: typeof schoolState },
-      selectDate: { value: selectDate, type: typeof selectDate }, // YY-MM-DD
-    };
+      selectDate: { value: selectDate, type: typeof selectDate },
+    }; //운전자가 생성한 여행셋
 
     try {
       // tripSet을 사용하여 서비스 호출
@@ -201,9 +200,20 @@ function Trip(props) {
           <button
             className="tripBtn"
             onClick={() => {
-              handleInsert();
               if (tripCheck === false) {
                 props.setTrip(false); // 창닫기
+                // handleInsert(); 여정만드는 api 호출
+                post.push({
+                  carNum: { value: carNum, type: typeof carNum },
+                  goTime: { value: goTime, type: typeof goTime },
+                  recruit: { value: recruit, type: typeof recruit },
+                  des: { value: des, type: typeof des },
+                  dep: { value: dep, type: typeof dep },
+                  schoolState: { value: schoolState, type: typeof schoolState },
+                  selectDate: { value: selectDate, type: typeof selectDate },
+                }); //운전자가 생성한 여행셋
+
+                alert("여정이 생성되었습니다.");
               } else {
                 alert("빈칸이 없는지 확인하세요");
               }
