@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import styles from "../Sign/Sign.module.css";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { register } from "../../apis/register";
 
 function Sign() {
   const [userName, setUserName] = useState(""); //이름
@@ -31,24 +31,9 @@ function Sign() {
       callNum,
     };
     try {
-      console.log(userInfo);
-      const response = await axios.post(
-        "http://146.56.42.61:4000/register",
-        userInfo,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      if (response.status === 201) {
-        // 응답 상태가 201인 경우
-        console.log("회원가입 성공");
-        alert("회원가입 완료");
-        navigate("/");
-      } else {
-        throw new Error("회원가입 실패");
-      }
+      const response = await register(userInfo);
+      console.log(response);
+      navigate("/");
     } catch (error) {
       console.error("회원가입 중 에러 발생:", error);
     }

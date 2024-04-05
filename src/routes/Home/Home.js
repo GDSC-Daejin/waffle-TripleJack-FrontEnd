@@ -16,8 +16,6 @@ function Home(props) {
     }
   }, [post]);
 
-  console.log(post);
-
   return (
     <div className="contentWrap">
       <div className={`${styles.homeDiv} ${styles.Top}`}>

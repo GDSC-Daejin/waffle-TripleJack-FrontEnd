@@ -22,7 +22,7 @@ function Content(props) {
     );
 
     setFilteredData(newFilteredData);
-  }, [nowState, today]); // 의존성 배열에 a.nowState를 추가함으로써, 이 값이 변경될 때마다 useEffect가 실행됩니다.
+  }, [nowState, today]);
 
   return (
     <div>

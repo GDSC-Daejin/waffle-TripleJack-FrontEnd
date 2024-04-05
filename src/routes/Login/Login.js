@@ -10,39 +10,27 @@ function Login(props) {
   const [passWord, setPassWord] = useState("");
   const [cookies, setCookie] = useCookies(["accessToken", "refreshToken"]); // 쿠키 사용 선언
 
-  // const handleLogin = async (e) => {
-  //   e.preventDefault();
-
-  //   try {
-  //     const response = await loginService(studId, passWord);
-
-  //     // 로그인 성공 시 쿠키에 토큰 저장
-  //     setCookie("accessToken", response.accessToken, {
-  //       path: "/",
-  //       maxAge: 3600,
-  //     }); // 액세스 토큰, 1시간 유효
-  //     setCookie("refreshToken", response.refreshToken, {
-  //       path: "/",
-  //       maxAge: 86400,
-  //     }); // 리프레시 토큰, 1일 유효
-  //     console.log(cookies); // accessToken 쿠키 값 확인
-
-  //     navigate("/home");
-  //   } catch (error) {
-  //     console.error("로그인 실패:", error);
-  //   }
-  // };
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await loginService();
-      console.log(response);
+      const response = await loginService(studId, passWord);
+
+      // 로그인 성공 시 쿠키에 토큰 저장
+      setCookie("accessToken", response.accessToken, {
+        path: "/",
+        maxAge: 3600,
+      }); // 액세스 토큰, 1시간 유효
+      setCookie("refreshToken", response.refreshToken, {
+        path: "/",
+        maxAge: 86400,
+      }); // 리프레시 토큰, 1일 유효
+
+      navigate("/home");
     } catch (error) {
       console.error("로그인 실패:", error);
     }
   };
-  // 나머지 컴포넌트 및 JSX 반환...
 
   return (
     <div className="contentWrap">
